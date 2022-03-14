@@ -4,7 +4,7 @@ pipeline{
 		stages{
 			stage('git-clone') {
 				steps{
-					checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'git-Jenkins', url: 'https://github.com/ETECH-Co/module2_ci.git']]])
+					checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins', url: 'https://github.com/Arise-Atongwe/spring-boot-docker.git']]])
 				}
 			}
 			stage('codebuild'){
