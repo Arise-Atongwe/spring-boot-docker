@@ -1,0 +1,28 @@
+pipeline{
+	agent any 
+	tools {maven 'maven'}
+		stages{
+			stage('git-clone') {
+				steps{
+					checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'git-Jenkins', url: 'https://github.com/ETECH-Co/module2_ci.git']]])
+				}
+			}
+			stage('codebuild'){
+				steps{
+				sh 'mvn clean package -DskipTests=true'
+				}
+			}
+			stage('Unit Tests - JUnit and JaCoCo'){
+				steps{
+					sh 'mvn test'
+					sh 'mvn -v'
+				}
+				post{
+					always{
+						junit'target/surefire-reports/*.xml'
+						jacoco execPattern: 'target/jacoco.exec'
+					}
+				}
+			}
+		} 
+}
