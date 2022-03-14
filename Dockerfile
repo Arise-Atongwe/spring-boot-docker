@@ -1,4 +1,4 @@
-FROM openjdk:8-alpine
+FROM openjdk:8-jdk-alpine
 RUN apk --no-cache add ca-certificates
 # #Required for starting application up.
 RUN apk update && apk add /bin/sh
