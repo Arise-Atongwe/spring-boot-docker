@@ -44,6 +44,10 @@ pipeline{
 			}
 			stage('Build Docker Image'){
 				steps{
+					// This step should not normally be used in your script. Consult the inline help for details.
+					withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker', url: 'https://hub.docker.com/u/jamaweh') {
+   					 // some block
+					}
         				sh 'docker build -t jamaweh/spring-boot-mongo .'
 				}
    			}
