@@ -7,9 +7,24 @@ pipeline{
 					checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins', url: 'https://github.com/Arise-Atongwe/spring-boot-docker.git']]])
 				}
 			}
-			stage('codebuild'){
+			stage('code validation'){
 				steps{
-				sh 'mvn clean package -DskipTests=true'
+				sh 'mvn validate'
+				}
+			}
+			stage('code compile'){
+				steps{
+				sh 'mvn compile'
+				}
+			}
+			stage('code test'){
+				steps{
+				sh 'mvn test'
+				}
+			}
+			stage('code package'){
+				steps{
+				sh 'mvn clean package' // -DskipTests=true'
 				}
 			}
 			stage('Unit Tests - JUnit and JaCoCo'){
