@@ -23,10 +23,10 @@ pipeline{
 //						jacoco execPattern: 'target/jacoco.exec'
 //					}
 //				}
-			}
+//			}
 			stage('Build Docker Image'){
 				steps{
-        				sh 'docker build -t mylandmarktech/spring-boot-mongo .'
+        				sh 'docker build -t jamaweh/spring-boot-mongo .'
 				}
     			}
 		}
