@@ -89,6 +89,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+   				 <groupId>org.jenkins-ci.plugins</groupId>
+   				 <artifactId>docker-workflow</artifactId>
+   				 <version>1.28</version>
+	</plugin>
 		</plugins>
 	</build>
 </project>
