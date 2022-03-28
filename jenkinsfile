@@ -44,7 +44,7 @@ pipeline{
 			}
 			stage('Build Docker Image'){
 				steps{
-					sh 'docker build -t jamaweh/spring-boot-mongo .'
+					sh 'docker build -t jamaweh/springboot-mongo .'
 				}
   			}
 		}
