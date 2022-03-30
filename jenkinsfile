@@ -44,7 +44,8 @@ pipeline{
 			}
 			stage('Build Docker Image'){
 				steps{
-				docker.withDockerRegistry(credentialsId: 'dockerHubcredentials2', url: 'https://registry.hub.docker.com/repository/docker/jamaweh/springboot-mongo')
+			        //docker.withDockerRegistry('dockerHubcredentials2', url: 'https://registry.hub.docker.com/repository/docker/jamaweh/springboot-mongo')
+				docker.withRegistry('https://registry.hub.docker.com', 'dockerHubcredentials2')
 				sh 'printenv'
 				sh 'docker build -t jamaweh/springboot-mongo:""$GIT_COMMIT"" .'
 				sh 'docker push jamaweh/springboot-mongo:""$GIT_COMMIT"" .'
